@@ -6,9 +6,14 @@ let db;
 
 const connectToDB = async () => {
     if (!db) {
-        const client = new MongoClient(url, { useUnifiedTopology: true });
-        await client.connect();
-        db = client.db(dbName);
+        try {
+            const client = new MongoClient(url);
+            await client.connect();
+            db = client.db(dbName);
+        } catch (error) {
+            console.error('Failed to connect to the database', error);
+            throw error;
+        }
     }
     return db;
 };

@@ -1,7 +1,7 @@
 const TaskSchema = {
     name: String,
     description: String,
-    doneStatus: Boolean,
+    status: String,
     projectId: String,
     startDate: Date,
     dueDate: Date,
